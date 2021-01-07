@@ -5,6 +5,7 @@ import Cli from "../components/cli";
 import Cloud from "../components/cloud";
 import Languages from "../components/languages";
 import Footer from "../components/footer";
+
 export default class Home extends Component {
 	render() {
 		return (

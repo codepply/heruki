@@ -1,12 +1,20 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
+import Modal from "./modal";
 
 export default class Showcase extends Component {
 	state = {
 		name: "",
 		companyName: "",
 		email: "",
+		showModal: false,
+	};
+
+	closeModal = () => {
+		this.setState({
+			showModal: false,
+		});
 	};
 
 	handleInputVals = (e) => {
@@ -26,11 +34,11 @@ export default class Showcase extends Component {
 				email: this.state.email,
 			})
 			.then((res) => {
-				alert(res.data.status);
 				this.setState({
 					name: "",
 					email: "",
 					companyName: "",
+					showModal: true,
 				});
 			});
 	};
@@ -38,6 +46,7 @@ export default class Showcase extends Component {
 	render() {
 		return (
 			<section className='showcase'>
+				<Modal state={this.state.showModal} close={this.closeModal} />
 				<div className='container grid'>
 					<div className='showcase-text'>
 						<h1>Easier Deployment</h1>
