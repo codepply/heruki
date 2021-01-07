@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import axios from "axios";
 
 export default class Showcase extends Component {
 	state = {
@@ -16,7 +17,23 @@ export default class Showcase extends Component {
 		});
 	};
 
-	handleSubmit = () => {};
+	handleSubmit = (event) => {
+		event.preventDefault();
+		axios
+			.post("http://localhost:8080/api/hello", {
+				name: this.state.name,
+				companyName: this.state.companyName,
+				email: this.state.email,
+			})
+			.then((res) => {
+				alert(res.data.status);
+				this.setState({
+					name: "",
+					email: "",
+					companyName: "",
+				});
+			});
+	};
 
 	render() {
 		return (
@@ -42,7 +59,7 @@ export default class Showcase extends Component {
 
 					<div className='showcase-form card'>
 						<h2>Request a Demo</h2>
-						<form>
+						<form onSubmit={this.handleSubmit}>
 							<div className='form-control'>
 								<input
 									value={this.state.name}
