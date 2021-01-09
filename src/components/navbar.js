@@ -28,6 +28,11 @@ export default class Navbar extends Component {
 									Docs
 								</NavLink>
 							</li>
+							<li>
+								<a className='a-link' href='http://localhost:8080/auth/google'>
+									Login
+								</a>
+							</li>
 						</ul>
 					</nav>
 				</div>
