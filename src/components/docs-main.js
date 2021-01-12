@@ -12,7 +12,7 @@ export default function Main() {
 					<nav>
 						<ul>
 							<li>
-								<Link class='text-primary a-link' to='/docs'>
+								<Link className='text-primary a-link' to='/docs'>
 									Introduction
 								</Link>
 							</li>
@@ -29,7 +29,7 @@ export default function Main() {
 						</ul>
 					</nav>
 
-					<h3 class='my-2'>Deployment</h3>
+					<h3 className='my-2'>Deployment</h3>
 					<nav>
 						<ul>
 							<li>

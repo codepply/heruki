@@ -29,9 +29,9 @@ export default class Navbar extends Component {
 								</NavLink>
 							</li>
 							<li>
-								<a className='a-link' href='http://localhost:8080/auth/google'>
-									Login
-								</a>
+								<NavLink className='a-link' to='/account'>
+									Account
+								</NavLink>
 							</li>
 						</ul>
 					</nav>
