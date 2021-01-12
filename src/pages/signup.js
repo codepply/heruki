@@ -20,7 +20,7 @@ export default class SignUp extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		axios
-			.post("http://localhost:8080/auth/sign-up", {
+			.post("https://heruki-app.herokuapp.com/auth/sign-up", {
 				data: this.state,
 			})
 			.then((res) => {
