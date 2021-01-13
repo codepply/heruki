@@ -41,7 +41,6 @@ export default class SignUp extends Component {
 					},
 				})
 				.then((res) => {
-					console.log(res);
 					this.setState({
 						email: "",
 						firstName: "",
@@ -66,7 +65,6 @@ export default class SignUp extends Component {
 					} else {
 						console.log("Something went wrong");
 					}
-					console.log(res);
 				});
 		}
 	};
