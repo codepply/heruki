@@ -1,19 +1,31 @@
 import React, {Component} from "react";
 import Footer from "../components/footer";
+import axios from "axios";
+
+const jwtToken = sessionStorage.getItem("jwtToken");
 
 export default class Dashboard extends Component {
 	state = {
-		displayName: "",
+		name: "",
 		image: "",
 		email: "",
 	};
 
-	componentDidMount(e) {
-		const value = e.target.value;
-		this.setState({
-			...this.state,
-			[e.target.name]: value,
-		});
+	componentDidMount() {
+		axios
+			.get("https://heruki-app.herokuapp.com/auth/user", {
+				headers: {
+					Authorization: jwtToken,
+					Accept: "application/json",
+					"Content-Type": "application/json",
+				},
+			})
+			.then((res) => {
+				this.setState({
+					name: res.data.name,
+					email: res.data.email,
+				});
+			});
 	}
 
 	render() {
@@ -21,8 +33,7 @@ export default class Dashboard extends Component {
 			<>
 				<div className='container'>
 					<h1>Dashboard page. Welcome!</h1>
-					<h3>Hello: {this.state.displayName}</h3>
-					<img src={this.state.image} alt='' />
+					<h3>Hello: {this.state.name}</h3>
 					<h3>Email: {this.state.email}</h3>
 				</div>
 				<Footer />
