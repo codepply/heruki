@@ -28,12 +28,13 @@ export default class Showcase extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		axios
-			.post("http://localhost:8080/api/hello", {
+			.post("https://heruki-app.herokuapp.com/api/message", {
 				name: this.state.name,
 				companyName: this.state.companyName,
 				email: this.state.email,
 			})
 			.then((res) => {
+				console.log(res);
 				this.setState({
 					name: "",
 					email: "",
