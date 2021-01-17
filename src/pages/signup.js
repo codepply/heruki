@@ -5,7 +5,7 @@ import {Redirect} from "react-router-dom";
 import Hero from "../components/hero";
 
 const URL_P = "https://heruki-app.herokuapp.com";
-const URL_D = "http://localhost:8080";
+// const URL_D = "http://localhost:8080";
 
 export default class SignUp extends Component {
 	state = {
