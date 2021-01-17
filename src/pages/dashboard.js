@@ -33,6 +33,10 @@ export default class Dashboard extends Component {
 			});
 	}
 
+	handleLogout = () => {
+		sessionStorage.removeItem("jwtToken");
+	};
+
 	render() {
 		return (
 			<>
@@ -42,7 +46,9 @@ export default class Dashboard extends Component {
 						<img className='profile-img' src={profile} alt='profile' />
 						<h3>Hello {this.state.name}!</h3>
 						<p>Email: {this.state.email}</p>
-						<button className='btn btn-primary'>Logout</button>
+						<button onClick={this.handleLogout} className='btn btn-primary'>
+							Logout
+						</button>
 					</div>
 				</div>
 				<Footer />
