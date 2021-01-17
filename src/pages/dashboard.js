@@ -1,10 +1,15 @@
 import React, {Component} from "react";
 import Footer from "../components/footer";
 import axios from "axios";
-
-const jwtToken = sessionStorage.getItem("jwtToken");
+import {Redirect} from "react-router-dom";
+import profile from "../images/profile.png";
 
 export default class Dashboard extends Component {
+	constructor(props) {
+		super(props);
+		this.jwtToken = sessionStorage.getItem("jwtToken");
+	}
+
 	state = {
 		name: "",
 		image: "",
@@ -15,7 +20,7 @@ export default class Dashboard extends Component {
 		axios
 			.get("https://heruki-app.herokuapp.com/auth/user", {
 				headers: {
-					Authorization: jwtToken,
+					Authorization: this.jwtToken,
 					Accept: "application/json",
 					"Content-Type": "application/json",
 				},
@@ -31,10 +36,14 @@ export default class Dashboard extends Component {
 	render() {
 		return (
 			<>
+				{this.jwtToken ? "" : <Redirect to='/' />}
 				<div className='container'>
-					<h1>Dashboard page. Welcome!</h1>
-					<h3>Hello: {this.state.name}</h3>
-					<h3>Email: {this.state.email}</h3>
+					<div className='card text-center'>
+						<img className='profile-img' src={profile} alt='profile' />
+						<h3>Hello {this.state.name}!</h3>
+						<p>Email: {this.state.email}</p>
+						<button className='btn btn-primary'>Logout</button>
+					</div>
 				</div>
 				<Footer />
 			</>

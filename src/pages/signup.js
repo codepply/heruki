@@ -2,6 +2,10 @@ import React, {Component} from "react";
 import Footer from "../components/footer";
 import axios from "axios";
 import {Redirect} from "react-router-dom";
+import Hero from "../components/hero";
+
+const URL_P = "https://heruki-app.herokuapp.com";
+const URL_D = "http://localhost:8080";
 
 export default class SignUp extends Component {
 	state = {
@@ -33,7 +37,7 @@ export default class SignUp extends Component {
 		event.preventDefault();
 		if (this.state.switchState) {
 			axios
-				.post("https://heruki-app.herokuapp.com/auth/sign-up", {
+				.post(`${URL_P}/auth/sign-up`, {
 					data: {
 						name: `${this.state.firstName} ${this.state.lastName}`,
 						email: this.state.email,
@@ -50,7 +54,7 @@ export default class SignUp extends Component {
 				});
 		} else {
 			axios
-				.post("https://heruki-app.herokuapp.com/auth/login", {
+				.post(`${URL_P}/auth/login`, {
 					data: {
 						email: this.state.email,
 						password: this.state.password,
@@ -73,6 +77,7 @@ export default class SignUp extends Component {
 		return (
 			<>
 				{this.state.loggedIn ? <Redirect to='/dashboard' /> : ""}
+				<Hero text='Please Sign Up For Free Account or Login' />
 				<div className='form'>
 					{/* tab group */}
 					<ul className='tab-group'>
